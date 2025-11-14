@@ -1,0 +1,3 @@
+[cnj]
+base_url = "https://comunicaapi.pje.jus.br"
+timeout = 30    
