@@ -1,3 +1,13 @@
 [cnj]
 base_url = "https://comunicaapi.pje.jus.br"
-timeout = 30    
+timeout = 30
+
+[deadlines]
+# Default prazo in days when not specified per tipoComunicacao
+default = 10
+# Threshold in days to consider 'approaching' (can be overridden per request)
+threshold = 3
+# Per-type overrides (keys should match / be normalized from `tipoComunicacao`)
+Intimacao = 10
+Citacao = 15
+Notificacao = 10

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from fastapi.middleware.cors import CORSMiddleware
 from application.api.cnj_router import router as cnj_router
 
 @asynccontextmanager
@@ -15,6 +16,15 @@ app = FastAPI(
     version="1.0.0",
     description="API para consultar informações do CNJ (processos e advogados).",
     lifespan=lifespan
+)
+
+# Allow CORS for local frontend (Vite dev at http://localhost:5173). Adjust origins in production.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(cnj_router, prefix="/cnj", tags=["CNJ"])
